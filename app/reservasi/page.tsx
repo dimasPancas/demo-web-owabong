@@ -1,28 +1,16 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import {
-  Calculator,
-  Users,
   CheckCircle2,
-  Calendar,
-  Phone,
-  Building2,
   Sparkles,
-  Ticket,
-  Utensils,
-  HelpCircle,
-  Clock,
-  ShieldCheck,
   Send,
-  FileSpreadsheet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface PackageOption {
   id: string;
@@ -40,9 +28,9 @@ const packageOptions: PackageOption[] = [
     description: "Khusus kunjungan edukasi sekolah dan renang massal pelajar.",
     includes: [
       "Tiket Masuk Semua Kolam Alami",
-      "Pemandu Edukasi Mata Air",
-      "Bebas Akses Kolam Ombak & Busa",
-      "Sertifikat Kunjungan Sekolah",
+      "Pemandu Edukasi Mata Air Tuk Sendang",
+      "Bebas Akses Kolam Ombak & Busa Salju",
+      "Sertifikat Kunjungan Resmi Sekolah",
     ],
   },
   {
@@ -66,7 +54,7 @@ const packageOptions: PackageOption[] = [
       "Tiket Masuk Terusan Kolam Air",
       "Free 1 Gazebo Bersama",
       "Bebas Wahana Kolam Terapi Ikan",
-      "Area Parkir Khusus Rombongan",
+      "Area Parkir Khusus Bus / Mobil Rombongan",
     ],
   },
 ];
@@ -82,31 +70,31 @@ interface AddOn {
 const availableAddons: AddOn[] = [
   {
     id: "lunch-box",
-    name: "Paket Makan Siang Bento Tradisional",
+    name: "Paket Makan Siang Bento & Mendoan Hangat",
     price: 25000,
     type: "perPerson",
-    description: "Nasi box menu ayam goreng/bakar bumbu rempah + mendoan + buah + mineral.",
+    description: "Nasi box ayam goreng rempah + mendoan khas Banyumas + sambal kecap + buah + air mineral.",
   },
   {
     id: "outbound-instructor",
-    name: "Instruktur Outbound & Fun Games",
+    name: "Instruktur Outbound & Fun Team Building",
     price: 250000,
     type: "flat",
-    description: "Pemandu games profesional untuk membangun kebersamaan rombongan.",
+    description: "Pemandu fun games profesional bersertifikat untuk memeriahkan acara rombongan.",
   },
   {
     id: "vip-gazebo",
-    name: "Sewa Gazebo VIP Eksklusif",
+    name: "Sewa Gazebo VIP Eksklusif Tepi Kolam",
     price: 150000,
     type: "flat",
-    description: "Gazebo luas tepat di tepi kolam ombak dengan stopkontak charger.",
+    description: "Gazebo luas tepat di tepi kolam ombak dengan stopkontak charger handphone.",
   },
   {
     id: "towel-locker",
     name: "Paket Handuk Bersih & Loker Barang",
     price: 10000,
     type: "perPerson",
-    description: "Fasilitas handuk wangi dan loker aman per orang.",
+    description: "Fasilitas handuk steril wangi dan loker penyimpanan digital aman per orang.",
   },
 ];
 
@@ -231,20 +219,22 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#f0f9ff]">
       {/* Top Banner */}
       <section className="bg-gradient-to-b from-sky-900 via-sky-800 to-slate-900 text-white py-16 relative overflow-hidden">
+        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 rounded-full bg-cyan-400/10 blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
           <Badge
             variant="default"
             className="bg-amber-500/20 text-amber-200 border border-amber-400/30 text-xs font-bold px-4 py-1.5"
           >
+            <Sparkles className="h-3.5 w-3.5 mr-1 text-amber-300 inline" />
             Kalkulator Reservasi Instan
           </Badge>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             Kalkulator Paket Rombongan & WhatsApp Booking
           </h1>
-          <p className="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-sky-100 text-base sm:text-lg max-w-2xl mx-auto">
             Hitung estimasi biaya tiket rombongan secara akurat dengan diskon khusus,
             lalu kirimkan rincian pesanan langsung ke customer service resmi via WhatsApp.
           </p>
@@ -258,8 +248,8 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
             {/* Left Column: Form Controls (7 cols) */}
             <div className="lg:col-span-7 space-y-8">
               {/* Step 1: Contact Details */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-                <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-sky-100 shadow-sm space-y-6">
+                <div className="flex items-center gap-3 pb-4 border-b border-sky-100">
                   <div className="h-9 w-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-sm">
                     1
                   </div>
@@ -268,7 +258,7 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                       Data Koordinator Rombongan
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Informasi penanggung jawab untuk konfirmasi tiket
+                      Informasi penanggung jawab untuk konfirmasi tiket dan koordinasi bus
                     </p>
                   </div>
                 </div>
@@ -281,9 +271,10 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                     <Input
                       type="text"
                       required
-                      placeholder="Contoh: Budi Santoso"
+                      placeholder="Contoh: Ibu Rina Setyawati"
                       value={coordinatorName}
                       onChange={(e) => setCoordinatorName(e.target.value)}
+                      className="rounded-xl border-sky-200"
                     />
                   </div>
 
@@ -297,6 +288,7 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                       placeholder="Contoh: 08123456789"
                       value={whatsappNumber}
                       onChange={(e) => setWhatsappNumber(e.target.value)}
+                      className="rounded-xl border-sky-200"
                     />
                   </div>
 
@@ -306,9 +298,10 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                     </label>
                     <Input
                       type="text"
-                      placeholder="Contoh: SMA Negeri 1 Purbalingga"
+                      placeholder="Contoh: SMP Negeri 1 Purbalingga"
                       value={institutionName}
                       onChange={(e) => setInstitutionName(e.target.value)}
+                      className="rounded-xl border-sky-200"
                     />
                   </div>
 
@@ -320,14 +313,15 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                       type="date"
                       value={visitDate}
                       onChange={(e) => setVisitDate(e.target.value)}
+                      className="rounded-xl border-sky-200"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Step 2: Package & Participant Count */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-                <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-sky-100 shadow-sm space-y-6">
+                <div className="flex items-center gap-3 pb-4 border-b border-sky-100">
                   <div className="h-9 w-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-sm">
                     2
                   </div>
@@ -336,7 +330,7 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                       Pilihan Paket & Jumlah Peserta
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Minimal 20 orang untuk mendapatkan harga khusus rombongan
+                      Minimal 20 orang untuk mendapatkan potongan diskon rombongan otomatis
                     </p>
                   </div>
                 </div>
@@ -355,24 +349,28 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                         onChange={(e) =>
                           setPeopleCount(parseInt(e.target.value) || 0)
                         }
-                        className="font-bold text-lg"
+                        className="font-extrabold text-lg rounded-xl border-sky-200 h-12"
                       />
-                      <div className="flex gap-1">
-                        {[30, 50, 100].map((preset) => (
+                      <div className="flex gap-1.5">
+                        {[20, 50, 100, 200].map((preset) => (
                           <button
                             key={preset}
                             type="button"
                             onClick={() => setPeopleCount(preset)}
-                            className="px-3 py-2 text-xs font-bold rounded-xl bg-slate-100 hover:bg-sky-100 hover:text-sky-700 transition-colors border border-slate-200"
+                            className="px-3 py-2 text-xs font-bold rounded-xl bg-sky-50 hover:bg-sky-600 hover:text-white text-sky-700 transition-colors border border-sky-200"
                           >
-                            +{preset}
+                            {preset} pax
                           </button>
                         ))}
                       </div>
                     </div>
-                    {peopleCount < 20 && (
+                    {peopleCount < 20 ? (
                       <p className="text-xs text-amber-600 font-medium">
-                        Tips: Dapatkan diskon rombongan otomatis untuk minimal 20 orang!
+                        Tips: Tambah hingga 20 orang untuk mendapatkan diskon rombongan otomatis 5%!
+                      </p>
+                    ) : (
+                      <p className="text-xs text-emerald-600 font-bold">
+                        🎉 Selamat! Rombongan Anda mendapatkan diskon {(discountPercentage * 100).toFixed(0)}%.
                       </p>
                     )}
                   </div>
@@ -416,8 +414,8 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
               </div>
 
               {/* Step 3: Add-on Facilities */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-                <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-sky-100 shadow-sm space-y-6">
+                <div className="flex items-center gap-3 pb-4 border-b border-sky-100">
                   <div className="h-9 w-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-sm">
                     3
                   </div>
@@ -426,7 +424,7 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                       Fasilitas Tambahan & Layanan (Opsional)
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Pilih fasilitas pendukung untuk kenyamanan rombongan Anda
+                      Pilih fasilitas pendukung kuliner dan kegiatan outbound untuk kenyamanan rombongan
                     </p>
                   </div>
                 </div>
@@ -439,8 +437,8 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                         key={addon.id}
                         className={`flex items-start gap-4 p-4 rounded-2xl border cursor-pointer transition-all duration-200 ${
                           isChecked
-                            ? "border-sky-500 bg-sky-50/50 shadow-xs ring-1 ring-sky-500"
-                            : "border-slate-200 bg-white hover:bg-slate-50"
+                            ? "border-sky-500 bg-sky-50/70 shadow-xs ring-1 ring-sky-500"
+                            : "border-slate-200 bg-white hover:bg-sky-50/40"
                         }`}
                       >
                         <input
@@ -475,10 +473,10 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="Contoh: Rombongan membawa 2 bus pariwisata, butuh bantuan area parkir dan sesi sambutan..."
+                    placeholder="Contoh: Rombongan membawa 2 bus pariwisata besar, butuh bantuan area parkir dan sesi foto bersama..."
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm ring-offset-background placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 shadow-xs"
+                    className="w-full rounded-2xl border border-sky-200 bg-white px-4 py-2.5 text-sm ring-offset-background placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 shadow-xs"
                   />
                 </div>
               </div>
@@ -486,18 +484,18 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
 
             {/* Right Column: Live Calculator Receipt Card (5 cols) */}
             <div className="lg:col-span-5 sticky top-24 space-y-6">
-              <Card className="rounded-3xl border border-slate-200/90 bg-white shadow-xl overflow-hidden">
+              <Card className="rounded-3xl border border-sky-100 bg-white shadow-xl overflow-hidden">
                 {/* Header */}
-                <div className="bg-gradient-to-r from-sky-600 to-sky-700 p-6 text-white space-y-1">
+                <div className="bg-gradient-to-r from-sky-600 to-cyan-600 p-6 text-white space-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-sky-200">
+                    <span className="text-xs font-bold uppercase tracking-wider text-cyan-200">
                       Rincian Estimasi Biaya
                     </span>
                     <Badge variant="accent" className="font-bold shadow-xs">
                       Live Calculator
                     </Badge>
                   </div>
-                  <h3 className="text-2xl font-extrabold tracking-tight">
+                  <h3 className="text-3xl font-extrabold tracking-tight">
                     {formatRupiah(grandTotal)}
                   </h3>
                   <p className="text-xs text-sky-100">
@@ -561,10 +559,10 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                           Total Estimasi
                         </span>
                         <span className="text-[11px] text-slate-400">
-                          Sudah termasuk pajak & asuransi
+                          Sudah termasuk asuransi & akses wahana
                         </span>
                       </div>
-                      <strong className="text-xl font-extrabold text-sky-700">
+                      <strong className="text-2xl font-black text-sky-700">
                         {formatRupiah(grandTotal)}
                       </strong>
                     </div>
@@ -578,19 +576,19 @@ Mohon konfirmasi ketersediaan jadwal dan petunjuk prosedur pembayaran uang muka 
                       className="w-full h-14 rounded-2xl font-extrabold text-base gap-3 shadow-lg shadow-orange-500/25 group"
                     >
                       <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                      Kirim ke WhatsApp
+                      Kirim Reservasi ke WhatsApp
                     </Button>
                     <p className="text-[11px] text-slate-500 text-center leading-relaxed">
-                      Format pesan otomatis terisi lengkap dan akan terhubung langsung ke WhatsApp Customer Service Owabong Purbalingga.
+                      Format rincian pesanan akan otomatis terisi dan terhubung langsung ke WhatsApp Customer Service Owabong Purbalingga.
                     </p>
                   </div>
                 </CardContent>
 
                 {/* Trust Footer */}
-                <div className="bg-slate-50 p-4 border-t border-slate-100 text-xs text-slate-600 space-y-1.5">
+                <div className="bg-sky-50/50 p-4 border-t border-sky-100 text-xs text-slate-600 space-y-1.5">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
-                    <span>Konfirmasi ketersediaan tanggal dalam 15 menit</span>
+                    <span>Konfirmasi ketersediaan jadwal dalam 15 menit</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />

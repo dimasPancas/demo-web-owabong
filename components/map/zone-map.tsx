@@ -65,7 +65,7 @@ export default function ZoneMap({ selectedZone, onSelectZone }: ZoneMapProps) {
     : [-7.3813, 109.349];
 
   return (
-    <div className="w-full h-full min-h-[550px] lg:min-h-[650px] rounded-3xl overflow-hidden shadow-xl border border-slate-200 relative">
+    <div className="w-full h-full min-h-[550px] lg:min-h-[650px] rounded-3xl overflow-hidden shadow-xl border border-sky-100 relative">
       <MapContainer
         center={centerCoords}
         zoom={16}
